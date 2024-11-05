@@ -13,22 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @CrossOrigin(origins = "*")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 public class ProductController {
     private static final Logger logger = LogManager.getLogger(ProductController.class);
     private final IProductService productService;
