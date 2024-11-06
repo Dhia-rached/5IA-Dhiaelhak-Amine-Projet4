@@ -1,0 +1,4 @@
+FROM dvmarques/openjdk-17-jdk-alpine-with-timezone
+EXPOSE 8082
+ADD target/DevOps_project-1.0.jar DevOps_project-1.0.jar
+ENTRYPOINT [ "java","-jar","/DevOps_project-1.0.jar" ]
