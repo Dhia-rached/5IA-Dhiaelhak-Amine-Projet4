@@ -1,4 +1,16 @@
-FROM dvmarques/openjdk-17-jdk-alpine-with-timezone
-EXPOSE 8082
-ADD target/DevOps_project-1.0.jar DevOps_project-1.0.jar
-ENTRYPOINT [ "java","-jar","/DevOps_project-1.0.jar" ]
+# Dockerfile
+
+# Use an official Java runtime as a parent image
+FROM openjdk:17-jdk-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the Spring Boot application JAR file to the container
+COPY target/DevOps_Project-1.0.jar app.jar
+
+# Expose the application's port (default Spring Boot port is 8080)
+EXPOSE 8080
+
+# Run the application
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
