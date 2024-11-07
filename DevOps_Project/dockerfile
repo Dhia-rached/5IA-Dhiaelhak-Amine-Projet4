@@ -1,16 +1,7 @@
-# Dockerfile
-
-# Use an official Java runtime as a parent image
 FROM openjdk:17-jdk-slim
-
-# Set the working directory in the container
-WORKDIR /app
-
+# Expose the application's port (default Spring Boot port
+EXPOSE 8082
 # Copy the Spring Boot application JAR file to the container
-COPY target/DevOps_Project-1.0.jar app.jar
-
-# Expose the application's port (default Spring Boot port is 8080)
-EXPOSE 8080
-
+ADD target/DevOps_Project-1.0.jar DevOps_Project-1.0.jar
 # Run the application
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["java", "-jar", "/DevOps_Project-1.0.jar"]
