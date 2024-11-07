@@ -10,10 +10,10 @@ services:
       - 3306:3306
     volumes:
       - db:/var/lib/mysql
-  app-5ia-Dhiaelhak-Amine-Projet4:
+  app-5ia-dhiaelhak-amine-projet4:
     depends_on:
       - mysqldb
-    image: lamloummedamin/lamloummohamedamin-5ia-Dhiaelhak-Amine-Projet4:1.0.0
+    image: lamloummedamin/lamloummohamedamin-5ia-dhiaelhak-amine-projet4:1.0.0
     restart: on-failure
     ports:
       - 8082:8082
