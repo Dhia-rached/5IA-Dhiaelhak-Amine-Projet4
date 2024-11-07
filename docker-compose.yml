@@ -10,10 +10,10 @@ services:
       -3306:3306
     volumes:
       -db:/var/lib/mysql
-  app-DevOpsProject:
+  app-devopsproject:
     depends_on:
       - mysqldb
-    image: silamin1/DevOpsProject:1.0.0
+    image: silamin1/devopsproject:1.0.0
     restart: on-failure
     ports:
       -8082:8082
