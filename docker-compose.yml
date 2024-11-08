@@ -9,9 +9,9 @@ services:
     ports:
       - "8082:8080"  # Host port 8082 mapped to container port 8080 for the Spring app
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/mydatabase
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/devops
       SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_PASSWORD: rootpassword
     depends_on:
       - db
       - nexus
@@ -23,8 +23,8 @@ services:
     ports:
       - "3307:3306"  # Host port 3307 mapped to container port 3306
     environment:
-      MYSQL_DATABASE: mydatabase  # The name of the MySQL database to create
-      MYSQL_ROOT_PASSWORD: root  # The root password for MySQL
+      MYSQL_DATABASE: devops
+      MYSQL_ROOT_PASSWORD: rootpassword
     volumes:
       - mysql_data:/var/lib/mysql
 
@@ -34,8 +34,7 @@ services:
     ports:
       - "8081:8081"  # Nexus default port
     environment:
-      NEXUS_SECURITY_RANDOMPASSWORD: 'false'  # Disables random password generation for Nexus
-      NEXUS_ADMIN_PASSWORD: dhia28102001D/  # Set custom password for Nexus admin
+      NEXUS_SECURITY_RANDOMPASSWORD: 'false'
     volumes:
       - nexus_data:/nexus-data
 
@@ -48,7 +47,6 @@ services:
       SONAR_JDBC_URL: jdbc:postgresql://db-sonarqube/sonarqube
       SONAR_JDBC_USERNAME: sonarqube
       SONAR_JDBC_PASSWORD: sonarqube
-      SONARQUBE_ADMIN_PASSWORD: dhia28102001D/  # Set custom password for SonarQube admin
     depends_on:
       - db-sonarqube
 
@@ -67,13 +65,8 @@ services:
     container_name: grafana
     ports:
       - "3000:3000"  # Grafana default port
-    depends_on:
-      - prometheus  # If you're using Prometheus with Grafana
     volumes:
       - grafana_data:/var/lib/grafana
-    environment:
-      GF_SECURITY_ADMIN_USER: admin  # Grafana admin username
-      GF_SECURITY_ADMIN_PASSWORD: dhia28102001D/  # Set custom password for Grafana admin
 
 volumes:
   mysql_data:
